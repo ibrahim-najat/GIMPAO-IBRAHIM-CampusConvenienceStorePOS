@@ -4,118 +4,260 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Campus Convenience Store POS</title>
+
+  <!-- Google Font (optional). If there is no internet, the page falls back to system fonts. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Header -->
+  <!-- ===== Header: store identity + cart counter ===== -->
   <header class="site-header">
-    <h1>Campus Convenience Store</h1>
-    <p>Point-of-Sale System</p>
+    <div class="header-inner">
+      <a href="#" class="brand">
+        <span class="brand-logo" aria-hidden="true">
+          <!-- Simple shopping bag icon -->
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 7h12l-1 13H7L6 7z"/>
+            <path d="M9 7a3 3 0 0 1 6 0"/>
+          </svg>
+        </span>
+        <span class="brand-text">
+          <strong>Campus Convenience Store</strong>
+          <small>Point-of-Sale System</small>
+        </span>
+      </a>
+
+      <a href="#order-summary" class="header-cart" aria-label="Go to order summary">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="9" cy="20" r="1.5"/>
+          <circle cx="18" cy="20" r="1.5"/>
+          <path d="M3 4h2l2.4 11h11.2L21 8H6.2"/>
+        </svg>
+        <span>Cart</span>
+        <span id="header-cart-count" class="cart-badge">0</span>
+      </a>
+    </div>
   </header>
+
+  <!-- ===== Hero: welcome message ===== -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <p class="hero-eyebrow">Open for students, faculty &amp; staff</p>
+        <h1>Grab your campus essentials in seconds.</h1>
+        <p class="hero-subtitle">
+          Snacks, drinks, and school supplies, all in one place.
+          Pick your items, pay in cash, and get your digital receipt right away.
+        </p>
+        <ul class="hero-chips">
+          <li>Quick checkout</li>
+          <li>Cash payment</li>
+          <li>Digital receipt</li>
+        </ul>
+      </div>
+
+      <!-- Decorative product images (hidden from screen readers) -->
+      <div class="hero-art" aria-hidden="true">
+        <img src="potato-chips.jpg" alt="" class="hero-img hero-img-1">
+        <img src="instant-noodles.jpg" alt="" class="hero-img hero-img-2">
+        <img src="notebook.jpg" alt="" class="hero-img hero-img-3">
+      </div>
+    </div>
+  </section>
 
   <main class="pos-layout">
 
-    <!-- LEFT COLUMN: Products -->
+    <!-- ===== LEFT COLUMN: Products ===== -->
     <section class="card products-section">
-      <h2>Products</h2>
+      <div class="section-heading">
+        <span class="step-number">1</span>
+        <div>
+          <h2>Choose Products</h2>
+          <p>Click <strong>Add to Cart</strong> to add an item to the order.</p>
+        </div>
+      </div>
 
+      <!-- Product cards. Each card has a data-id that matches the products list in script.js.
+           To change a picture, change the img src. -->
       <div id="product-list" class="product-grid">
 
-        <div class="product-card" data-name="Instant Noodles" data-price="18">
-          <h3>Instant Noodles</h3>
-          <p class="price">₱18.00</p>
-          <button type="button" class="add-button">Add to Order</button>
-        </div>
+        <!-- Product 1 -->
+        <article class="product-card" data-id="1">
+          <div class="product-image">
+            <img src="instant-noodles.jpg" alt="Instant Noodles" width="400" height="300">
+          </div>
+          <div class="product-info">
+            <span class="product-category">Snacks</span>
+            <h3>Instant Noodles</h3>
+            <p class="price">₱18.00</p>
+            <button type="button" class="add-button" data-id="1">Add to Cart</button>
+          </div>
+        </article>
 
-        <div class="product-card" data-name="Potato Chips" data-price="25">
-          <h3>Potato Chips</h3>
-          <p class="price">₱25.00</p>
-          <button type="button" class="add-button">Add to Order</button>
-        </div>
+        <!-- Product 2 -->
+        <article class="product-card" data-id="2">
+          <div class="product-image">
+            <img src="potato-chips.jpg" alt="Potato Chips" width="400" height="300">
+          </div>
+          <div class="product-info">
+            <span class="product-category">Snacks</span>
+            <h3>Potato Chips</h3>
+            <p class="price">₱25.00</p>
+            <button type="button" class="add-button" data-id="2">Add to Cart</button>
+          </div>
+        </article>
 
-        <div class="product-card" data-name="Soft Drink (Can)" data-price="25">
-          <h3>Soft Drink (Can)</h3>
-          <p class="price">₱25.00</p>
-          <button type="button" class="add-button">Add to Order</button>
-        </div>
+        <!-- Product 3 -->
+        <article class="product-card" data-id="3">
+          <div class="product-image">
+            <img src="soft-drink.jpg" alt="Soft Drink (Can)" width="400" height="300">
+          </div>
+          <div class="product-info">
+            <span class="product-category">Drinks</span>
+            <h3>Soft Drink (Can)</h3>
+            <p class="price">₱25.00</p>
+            <button type="button" class="add-button" data-id="3">Add to Cart</button>
+          </div>
+        </article>
 
-        <div class="product-card" data-name="Bottled Water" data-price="20">
-          <h3>Bottled Water</h3>
-          <p class="price">₱20.00</p>
-          <button type="button" class="add-button">Add to Order</button>
-        </div>
+        <!-- Product 4 -->
+        <article class="product-card" data-id="4">
+          <div class="product-image">
+            <img src="bottled-water.jpg" alt="Bottled Water" width="400" height="300">
+          </div>
+          <div class="product-info">
+            <span class="product-category">Drinks</span>
+            <h3>Bottled Water</h3>
+            <p class="price">₱20.00</p>
+            <button type="button" class="add-button" data-id="4">Add to Cart</button>
+          </div>
+        </article>
 
-        <div class="product-card" data-name="Ballpen (piece)" data-price="12">
-          <h3>Ballpen (piece)</h3>
-          <p class="price">₱12.00</p>
-          <button type="button" class="add-button">Add to Order</button>
-        </div>
+        <!-- Product 5 -->
+        <article class="product-card" data-id="5">
+          <div class="product-image">
+            <img src="ballpen.jpg" alt="Ballpen (piece)" width="400" height="300">
+          </div>
+          <div class="product-info">
+            <span class="product-category">School Supplies</span>
+            <h3>Ballpen (piece)</h3>
+            <p class="price">₱12.00</p>
+            <button type="button" class="add-button" data-id="5">Add to Cart</button>
+          </div>
+        </article>
 
-        <div class="product-card" data-name="Notebook (piece)" data-price="35">
-          <h3>Notebook (piece)</h3>
-          <p class="price">₱35.00</p>
-          <button type="button" class="add-button">Add to Order</button>
-        </div>
+        <!-- Product 6 -->
+        <article class="product-card" data-id="6">
+          <div class="product-image">
+            <img src="notebook.jpg" alt="Notebook (piece)" width="400" height="300">
+          </div>
+          <div class="product-info">
+            <span class="product-category">School Supplies</span>
+            <h3>Notebook (piece)</h3>
+            <p class="price">₱35.00</p>
+            <button type="button" class="add-button" data-id="6">Add to Cart</button>
+          </div>
+        </article>
 
       </div>
     </section>
 
-    <!-- RIGHT COLUMN: Order, Payment, Receipt -->
-    <div class="side-column">
+    <!-- ===== RIGHT COLUMN: Order, Payment, Receipt ===== -->
+    <aside class="side-column">
 
       <!-- Order Summary -->
-      <section class="card">
-        <h2>Order Summary</h2>
+      <section id="order-summary" class="card">
+        <div class="section-heading">
+          <span class="step-number">2</span>
+          <div>
+            <h2>Order Summary</h2>
+            <p>Adjust quantities or remove items.</p>
+          </div>
+        </div>
 
-        <table class="cart-table">
-          <thead>
-            <tr>
-              <th>Product</th>
-              <th>Price</th>
-              <th>Qty</th>
-              <th>Subtotal</th>
-            </tr>
-          </thead>
-          <tbody id="cart-items">
-            <!-- Cart rows will be added here by JavaScript -->
-          </tbody>
-        </table>
+        <!-- This wrapper is hidden by script.js when the cart is empty -->
+        <div id="cart-table-wrap" class="cart-table-wrap">
+          <table class="cart-table">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Qty</th>
+                <th>Subtotal</th>
+                <th><span class="visually-hidden">Action</span></th>
+              </tr>
+            </thead>
+            <tbody id="cart-items">
+              <!-- Cart rows will be added here by JavaScript -->
+            </tbody>
+          </table>
+        </div>
 
-        <p id="empty-cart-message" class="empty-message">No items in the order yet.</p>
+        <div id="empty-cart-message" class="empty-cart">
+          <span class="empty-cart-icon" aria-hidden="true">🛒</span>
+          <p><strong>Your cart is empty.</strong></p>
+          <p>Add a snack, a drink, or school supplies to get started.</p>
+        </div>
 
         <div class="totals">
-          <p>Total Items: <span id="total-items">0</span></p>
-          <p class="grand-total">Total: <span id="order-total">₱0.00</span></p>
+          <div class="totals-row">
+            <span>Total Items</span>
+            <span id="total-items">0</span>
+          </div>
+          <div class="totals-row grand-total">
+            <span>Total</span>
+            <span id="order-total">₱0.00</span>
+          </div>
         </div>
       </section>
 
       <!-- Payment -->
       <section class="card">
-        <h2>Payment</h2>
+        <div class="section-heading">
+          <span class="step-number">3</span>
+          <div>
+            <h2>Payment</h2>
+            <p>Enter the cash received from the customer.</p>
+          </div>
+        </div>
 
-        <form id="payment-form">
-          <label for="cash-payment">Cash Received (₱)</label>
-          <input type="number" id="cash-payment" min="0" step="0.01" placeholder="Enter cash amount">
+        <form id="payment-form" novalidate>
+          <label for="cash-payment">Cash Received</label>
+          <div class="input-with-prefix">
+            <span class="input-prefix" aria-hidden="true">₱</span>
+            <input type="number" id="cash-payment" min="0" step="0.01" placeholder="0.00" inputmode="decimal">
+          </div>
           <button type="submit" id="pay-button" class="primary-button">Confirm Payment</button>
         </form>
 
-        <p id="payment-message" class="payment-message"></p>
+        <!-- aria-live makes screen readers announce new messages -->
+        <p id="payment-message" class="payment-message" aria-live="polite"></p>
       </section>
 
-      <!-- Digital Receipt -->
-      <section id="receipt-section" class="card">
-        <h2>Digital Receipt</h2>
-
-        <div id="receipt-content" class="receipt-box">
-          <p class="empty-message">No receipt yet. Complete a payment to see the receipt.</p>
+      <!-- Digital Receipt (hidden until a successful payment) -->
+      <section id="receipt-section" class="card receipt-card" hidden>
+        <div class="section-heading">
+          <span class="step-number step-number-done">4</span>
+          <div>
+            <h2>Digital Receipt</h2>
+            <p>Payment complete. Here is the customer's receipt.</p>
+          </div>
         </div>
 
-        <button type="button" id="new-transaction-button" class="secondary-button">New Transaction</button>
+        <div id="receipt-content" class="receipt"></div>
+
+        <button type="button" id="new-transaction-button" class="secondary-button">Start New Transaction</button>
       </section>
 
-    </div>
+    </aside>
   </main>
+
+  <footer class="site-footer">
+    <p>Campus Convenience Store POS &middot; IT 415 Practical Examination</p>
+  </footer>
 
   <script src="script.js"></script>
 </body>
