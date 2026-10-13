@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campus Convenience Store POS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <h1>Campus Convenience Store</h1>
+    <p>Point-of-Sale System</p>
+  </header>
+
+  <main class="pos-layout">
+
+    <!-- LEFT COLUMN: Products -->
+    <section class="card products-section">
+      <h2>Products</h2>
+
+      <div id="product-list" class="product-grid">
+
+        <div class="product-card" data-name="Instant Noodles" data-price="18">
+          <h3>Instant Noodles</h3>
+          <p class="price">₱18.00</p>
+          <button type="button" class="add-button">Add to Order</button>
+        </div>
+
+        <div class="product-card" data-name="Potato Chips" data-price="25">
+          <h3>Potato Chips</h3>
+          <p class="price">₱25.00</p>
+          <button type="button" class="add-button">Add to Order</button>
+        </div>
+
+        <div class="product-card" data-name="Soft Drink (Can)" data-price="25">
+          <h3>Soft Drink (Can)</h3>
+          <p class="price">₱25.00</p>
+          <button type="button" class="add-button">Add to Order</button>
+        </div>
+
+        <div class="product-card" data-name="Bottled Water" data-price="20">
+          <h3>Bottled Water</h3>
+          <p class="price">₱20.00</p>
+          <button type="button" class="add-button">Add to Order</button>
+        </div>
+
+        <div class="product-card" data-name="Ballpen (piece)" data-price="12">
+          <h3>Ballpen (piece)</h3>
+          <p class="price">₱12.00</p>
+          <button type="button" class="add-button">Add to Order</button>
+        </div>
+
+        <div class="product-card" data-name="Notebook (piece)" data-price="35">
+          <h3>Notebook (piece)</h3>
+          <p class="price">₱35.00</p>
+          <button type="button" class="add-button">Add to Order</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- RIGHT COLUMN: Order, Payment, Receipt -->
+    <div class="side-column">
+
+      <!-- Order Summary -->
+      <section class="card">
+        <h2>Order Summary</h2>
+
+        <table class="cart-table">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Price</th>
+              <th>Qty</th>
+              <th>Subtotal</th>
+            </tr>
+          </thead>
+          <tbody id="cart-items">
+            <!-- Cart rows will be added here by JavaScript -->
+          </tbody>
+        </table>
+
+        <p id="empty-cart-message" class="empty-message">No items in the order yet.</p>
+
+        <div class="totals">
+          <p>Total Items: <span id="total-items">0</span></p>
+          <p class="grand-total">Total: <span id="order-total">₱0.00</span></p>
+        </div>
+      </section>
+
+      <!-- Payment -->
+      <section class="card">
+        <h2>Payment</h2>
+
+        <form id="payment-form">
+          <label for="cash-payment">Cash Received (₱)</label>
+          <input type="number" id="cash-payment" min="0" step="0.01" placeholder="Enter cash amount">
+          <button type="submit" id="pay-button" class="primary-button">Confirm Payment</button>
+        </form>
+
+        <p id="payment-message" class="payment-message"></p>
+      </section>
+
+      <!-- Digital Receipt -->
+      <section id="receipt-section" class="card">
+        <h2>Digital Receipt</h2>
+
+        <div id="receipt-content" class="receipt-box">
+          <p class="empty-message">No receipt yet. Complete a payment to see the receipt.</p>
+        </div>
+
+        <button type="button" id="new-transaction-button" class="secondary-button">New Transaction</button>
+      </section>
+
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

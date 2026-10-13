@@ -1,0 +1,219 @@
+/* ===== Color and spacing variables ===== */
+:root {
+  --primary: #1e6f5c;
+  --primary-dark: #15523f;
+  --background: #f4f6f8;
+  --card-bg: #ffffff;
+  --text: #222222;
+  --muted: #6b7280;
+  --border: #d9dee3;
+  --success: #1e7e34;
+  --error: #c0392b;
+}
+
+/* ===== Basic reset ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text);
+  background-color: var(--background);
+}
+
+h2 {
+  font-size: 1.25rem;
+  margin-bottom: 16px;
+  color: var(--primary-dark);
+}
+
+/* ===== Header ===== */
+.site-header {
+  background-color: var(--primary);
+  color: #ffffff;
+  text-align: center;
+  padding: 20px 16px;
+}
+
+.site-header h1 {
+  font-size: 1.8rem;
+}
+
+/* ===== Main layout: two columns ===== */
+.pos-layout {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+
+.side-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ===== Card (used by every section) ===== */
+.card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+/* ===== Products ===== */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.product-card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+}
+
+.product-card h3 {
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.product-card .price {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--primary);
+  margin-bottom: 12px;
+}
+
+/* ===== Buttons ===== */
+button {
+  font-family: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 10px 16px;
+  border: none;
+}
+
+.add-button,
+.primary-button {
+  background-color: var(--primary);
+  color: #ffffff;
+  width: 100%;
+}
+
+.add-button:hover,
+.primary-button:hover {
+  background-color: var(--primary-dark);
+}
+
+.secondary-button {
+  background-color: #ffffff;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  width: 100%;
+  margin-top: 16px;
+}
+
+.secondary-button:hover {
+  background-color: #e8f3f0;
+}
+
+button:disabled {
+  background-color: #b5bcc2;
+  cursor: not-allowed;
+}
+
+/* ===== Order Summary table ===== */
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.cart-table th,
+.cart-table td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.cart-table th {
+  background-color: #eef2f4;
+  font-size: 0.9rem;
+}
+
+.empty-message {
+  color: var(--muted);
+  text-align: center;
+  padding: 12px 0;
+}
+
+.totals {
+  margin-top: 12px;
+  text-align: right;
+}
+
+.grand-total {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: var(--primary-dark);
+}
+
+/* ===== Payment form ===== */
+#payment-form label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+#payment-form input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+#payment-form input:focus {
+  outline: 2px solid var(--primary);
+}
+
+.payment-message {
+  margin-top: 12px;
+  font-weight: bold;
+}
+
+/* JavaScript can add these classes to show success or error */
+.payment-message.success {
+  color: var(--success);
+}
+
+.payment-message.error {
+  color: var(--error);
+}
+
+/* ===== Receipt ===== */
+.receipt-box {
+  font-family: "Courier New", Courier, monospace;
+  background-color: #fafafa;
+  border: 1px dashed var(--border);
+  border-radius: 6px;
+  padding: 16px;
+}
+
+/* ===== Responsive: one column on smaller screens ===== */
+@media (max-width: 900px) {
+  .pos-layout {
+    grid-template-columns: 1fr;
+  }
+}
